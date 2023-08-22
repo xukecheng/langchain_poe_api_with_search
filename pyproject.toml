@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "langchain-poe-api-with-search"
+version = "0.1.0"
+description = ""
+authors = ["xukecheng"]
+readme = "README.md"
+packages = [{include = "langchain_poe_api_with_search"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+azure-functions = "^1.15.0"
+fastapi = "^0.101.1"
+requests = "^2.31.0"
+fastapi-poe = "^0.0.16"
+langchain = "^0.0.267"
+openai = "^0.27.8"
+google-api-python-client = "^2.97.0"
+jieba = "^0.42.1"
+langdetect = "^1.0.9"
+tiktoken = "^0.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
