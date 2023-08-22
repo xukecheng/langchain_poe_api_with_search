@@ -242,6 +242,8 @@ class EchoBot(PoeBot):
 
         memory = convert_poe_messages(query.query)
 
+        logging.info(memory)
+
         agent = initialize_agent(
             tools,
             llm=mode,
