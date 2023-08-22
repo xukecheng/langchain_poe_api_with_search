@@ -4,7 +4,7 @@ import asyncio
 import logging
 import requests
 
-# import jieba
+import jieba
 import tiktoken
 import azure.functions as func
 from typing import List, Type, Any, Dict, AsyncIterator, Literal, Union, cast
@@ -77,11 +77,11 @@ class BrowseUrlTool(BaseTool):
 
     def _cutoff_text_by_words(self, text: str, cutoff_words: int) -> str:
         clean_text = re.sub(r"<.*?>|\n", "", text)
-        # detected_lang = detect(clean_text)
-        # if detected_lang == "zh-cn":
-        #     words = jieba.lcut(clean_text)
-        # else:
-        words = re.findall(r"\b\w+\b", clean_text)
+        detected_lang = detect(clean_text)
+        if detected_lang == "zh-cn":
+            words = jieba.lcut(clean_text)
+        else:
+            words = re.findall(r"\b\w+\b", clean_text)
         words = [word for word in words if word.strip()]
         cutoff_array = words[:cutoff_words]
         while self._count_tokens(" ".join(cutoff_array)) > 2000:
