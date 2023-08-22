@@ -31,7 +31,11 @@ GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 
 MODE = "gpt-3.5-turbo"
 
-API_KEY = os.environ.get("API_KEY")
+API_KEY = os.environ.get("POE_API_KEY")
+
+OPENAI_API_BASE = os.environ.get("OPENAI_API_BASE")
+
+API_BASE = f"https://{OPENAI_API_BASE}/v1"
 
 
 # Define Pydantic models
@@ -238,6 +242,7 @@ class EchoBot(PoeBot):
             model=MODE,
             streaming=True,
             callbacks=[callback_handler],
+            openai_api_base=API_BASE,
         )
 
         memory = convert_poe_messages(query.query)
