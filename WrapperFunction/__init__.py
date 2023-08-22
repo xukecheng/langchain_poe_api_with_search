@@ -270,4 +270,4 @@ class EchoBot(PoeBot):
 # Run the EchoBot
 app = make_app(EchoBot(), api_key=API_KEY)
 
-run(EchoBot(), api_key=API_KEY)
+# run(EchoBot(), api_key=API_KEY)
